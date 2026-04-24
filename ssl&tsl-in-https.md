@@ -235,6 +235,83 @@ Reason:
 
 ---
 
+# 🔐 TLS – Use of Asymmetric Cryptography (Short Notes)
+
+---
+
+## 🧠 Purpose of Asymmetric in TLS
+
+TLS uses asymmetric cryptography for:
+
+1. **Authentication**
+2. **Key Exchange**
+
+---
+
+## ✅ 1. Authentication (Server Identity)
+
+- Server has:
+  - Private key (secret)
+  - Public key (in certificate)
+
+- Browser:
+  - Verifies certificate using CA
+  - Ensures server is genuine
+
+👉 Server proves identity by using its **private key**
+
+---
+
+## ✅ 2. Key Exchange
+
+### 🔥 Modern TLS (ECDHE)
+
+- Both client and server:
+  - Generate temporary key pairs
+  - Exchange public keys
+  - Compute shared secret independently
+
+👉 No key is sent over network
+
+---
+
+### ⚠️ Old TLS (RSA – deprecated)
+
+- Client encrypts symmetric key using server’s public key
+- Server decrypts using private key
+
+---
+
+## ❌ What Asymmetric is NOT used for
+
+- Not used for encrypting actual data
+- Too slow for large communication
+
+---
+
+## ⚡ What happens after
+
+- Shared secret is created
+- Converted into symmetric keys
+- Symmetric encryption (AES/ChaCha20) is used
+
+---
+
+## 🧠 Key Idea
+
+> Asymmetric = **Establish trust + share secret**  
+> Symmetric = **Encrypt data efficiently**
+
+---
+
+## 🔥 One-line Summary
+
+> TLS uses asymmetric cryptography only during the handshake for **authentication and key exchange**, then switches to symmetric encryption for data transfer.
+
+
+
+
+
 # ❓ 14. Questions & Answers
 
 ## Q1: Does TLS use symmetric or asymmetric encryption?
